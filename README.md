@@ -162,8 +162,8 @@ it produces stack traces like this where are visible org.foo packages and two li
 ## OSGI usage (Karaf)
 
 ```
-   bundle:install mvn:com.github.antonsjava/tostringer/1.0
-   bundle:start com.github.antonsjava.tostringer/1.0.0
+   bundle:install mvn:com.github.antonsjava/tostringer/1.2
+   bundle:start com.github.antonsjava.tostringer/1.2.0
 ```
 
 
