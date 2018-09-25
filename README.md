@@ -109,6 +109,59 @@ public class PrettyPrinter {
     }
 }
 ```
+## ToStackTracer
+
+The class produces shorter stack traces. It is usefull whne you want to see 
+only own packages in stack trace.
+
+```java
+public class PrettyPrinter {
+    private static ToStackTracer tostacktracer = 
+		ToStackTracer.instance("org.foo");
+    
+    public static String st(Throwable t) {
+        return tostacktracer.ts(t);
+    }    
+}
+```
+it produces stack traces like this where are visible org.foo packages and two line context
+```
+18:54:28 ERR - Unable to call get request to http://localhost:8080/mocka - /client_exist/6608271230 because of org.springframework.web.client.HttpClientErrorException: 404 null
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:94)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:79)
+	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63)
+	at ...
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:680)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:600)
+	at org.foo.integration.common.rest.JsonRestClient.getRequest(JsonRestClient.java:48)
+	at org.foo.integration.proj.client.impl.RestProjClient.clientExist(RestProjClient.java:53)
+	at org.foo.integration.proj.controller.ProjController.sendApplication(ProjController.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at ...
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.foo.integration.common.web.RRDumpFilter.doFilterInternal(RRDumpFilter.java:69)
+	at org.foo.integration.common.web.RRDumpFilter.doFilterInternal(RRDumpFilter.java:54)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at ... 
+18:54:28 WAR - Unable to call proj sendApplication java.lang.IllegalStateException: org.springframework.web.client.HttpClientErrorException: 404 null
+	at org.foo.integration.common.rest.JsonRestClient.getRequest(JsonRestClient.java:68)
+	at org.foo.integration.proj.client.impl.RestProjClient.clientExist(RestProjClient.java:53)
+	at org.foo.integration.proj.controller.ProjController.sendApplication(ProjController.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at ...
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.foo.integration.common.web.RRDumpFilter.doFilterInternal(RRDumpFilter.java:69)
+	at org.foo.integration.common.web.RRDumpFilter.doFilterInternal(RRDumpFilter.java:54)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at ...
+```
+
 
 ## Maven usage
 
