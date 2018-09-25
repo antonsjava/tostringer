@@ -23,6 +23,21 @@ for thyis properties.
 Class implementation limits this scanning only for classes which names start by 
 specified list of prefixes.
 
+## ToStringerFactory
+
+The class produces commonly used ToStringer instamces. 
+
+```java
+public class PrettyPrinter {
+    private static ToStringer tostringer = 
+		ToStringerFactory.simpleField("org.foo.client", "org.foo.server");
+    
+    public static String toString(Object object) {
+        return tostringer.toString(object);
+    }    
+}
+```
+
 ## Example
 
 This example shows how to create class PrettyPrint which uses ToStringer for classes 
