@@ -146,20 +146,6 @@ it produces stack traces like this where are visible org.foo packages and two li
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
 	at ... 
-18:54:28 WAR - Unable to call proj sendApplication java.lang.IllegalStateException: org.springframework.web.client.HttpClientErrorException: 404 null
-	at org.foo.integration.common.rest.JsonRestClient.getRequest(JsonRestClient.java:68)
-	at org.foo.integration.proj.client.impl.RestProjClient.clientExist(RestProjClient.java:53)
-	at org.foo.integration.proj.controller.ProjController.sendApplication(ProjController.java:106)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at ...
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.foo.integration.common.web.RRDumpFilter.doFilterInternal(RRDumpFilter.java:69)
-	at org.foo.integration.common.web.RRDumpFilter.doFilterInternal(RRDumpFilter.java:54)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at ...
 ```
 
 
@@ -169,7 +155,7 @@ it produces stack traces like this where are visible org.foo packages and two li
    <dependency>
       <groupId>com.github.antonsjava</groupId>
       <artifactId>tostringer</artifactId>
-      <version>1.0</version>
+      <version>1.2</version>
    </dependency>
 ```
 
