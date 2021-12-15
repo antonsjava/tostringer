@@ -153,9 +153,9 @@ it produces stack traces like this where are visible org.foo packages and two li
 
 ```
    <dependency>
-      <groupId>com.github.antonsjava</groupId>
+      <groupId>io.github.antonsjava</groupId>
       <artifactId>tostringer</artifactId>
-      <version>1.2</version>
+      <version>LASTVERSION</version>
    </dependency>
 ```
 
